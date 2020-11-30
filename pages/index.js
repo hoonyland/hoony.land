@@ -3,17 +3,17 @@ import Head from "next/head";
 import Container from "../components/container";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPostsForHome } from "../lib/api";
+import { getAllProjectsForHome } from "../lib/api";
 
-export default memo(({ preview }) => {
+export default memo(({ preview, projects }) => {
   return (
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Welcome to Hoony.Land 🦦</title>
+          <title>Hoonynori.Land 🦦</title>
         </Head>
         <Container>
-          <Intro />
+          <Intro projects={projects} />
           {/* {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -33,8 +33,9 @@ export default memo(({ preview }) => {
 });
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = (await getAllPostsForHome(preview)) ?? [];
+  // const allPosts = (await getAllPostsForHome(preview)) ?? [];
+  const projects = (await getAllProjectsForHome(preview)) ?? [];
   return {
-    props: { preview, allPosts },
+    props: { preview, projects },
   };
 }

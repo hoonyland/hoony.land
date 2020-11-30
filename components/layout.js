@@ -6,7 +6,7 @@ export default function Layout({ preview, children }) {
       <Meta />
       <div>
         {/* <Alert preview={preview} /> */}
-        <main>{children}</main>
+        <main className="max-w-4xl mx-auto">{children}</main>
       </div>
     </>
   );
