@@ -6,7 +6,7 @@
 
 html,
 body {
-  background-color: #202621;
+  background-color: #111111;
 }
 
 h1,
@@ -16,7 +16,8 @@ h4,
 h5,
 h6,
 p,
-a {
+a,
+time {
   color: white;
 }
 

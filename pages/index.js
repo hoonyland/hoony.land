@@ -3,29 +3,20 @@ import Head from "next/head";
 import Container from "../components/container";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllProjectsForHome } from "../lib/api";
+import Posts from "../components/posts";
+import { getAllPostsForHome, getAllProjectsForHome } from "../lib/api";
 
-export default memo(({ preview, projects }) => {
+export default memo(({ preview, posts, projects }) => {
   return (
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Hoonynori.Land 🦦</title>
+          <title>Hoony.Land 🦦</title>
         </Head>
         <Container>
           <Intro projects={projects} />
-          {/* {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )} */}
 
-          {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+          <Posts posts={posts} />
         </Container>
       </Layout>
     </>
@@ -33,9 +24,9 @@ export default memo(({ preview, projects }) => {
 });
 
 export async function getStaticProps({ preview = false }) {
-  // const allPosts = (await getAllPostsForHome(preview)) ?? [];
+  const posts = (await getAllPostsForHome(preview)) ?? [];
   const projects = (await getAllProjectsForHome(preview)) ?? [];
   return {
-    props: { preview, projects },
+    props: { preview, posts, projects },
   };
 }
